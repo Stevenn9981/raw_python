@@ -22,8 +22,7 @@ def getIp(line):
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-        print("正在调用本地路由跟踪，请稍等")
-        result = os.popen('mtr ' + sys.argv[1])
+        result = os.popen('mtr -c 5 ' + sys.argv[1])
         res = result.read()
         for line in res.splitlines():
             ip = getIp(line)
@@ -31,4 +30,4 @@ if __name__ == '__main__':
                 line += " " # + getLocation(ip)
             print(line)
     else:
-        print("参数不完整，请传入ip地址")
+        print("Enter IP address")
